@@ -5,25 +5,28 @@ import { IconContainer } from './IconContainer';
 interface Camp {
   name: string;
   description: string;
+  customIcon?: string;
 }
 
 const Gallery: React.FC = () => {
   const camps: Camp[] = [
     {
       name: "706 技术人文营地",
-      description: "706 技术人文营地是一场于 1 月 22 日至 27 日 举行的驻留式营地，在为期五天的连续节奏中，下午围绕 技术与判断、加速主义与冲击、亲密关系与算法、劳动与自动化，以及中国作为未来人类的一种范式 展开子论坛讨论，夜晚以社区开放讨论的形式延展问题，通过共同生活与持续对话，练习如何作为人生活在已经到来的未来之中。"
+      description: "706 技术人文营地是一场于 1 月 22 日至 27 日 举行的驻留式营地，在为期五天的连续节奏中，下午围绕 技术与判断、加速主义与冲击、亲密关系与算法、劳动与自动化，以及中国作为未来人类的一种范式 展开子论坛讨论，夜晚以社区开放讨论的形式延展问题，通过共同生活与持续对话，练习如何作为人生活在已经到来的未来之中。",
+      customIcon: "https://github.com/Uacer/Wamo/blob/main/20731767070182_.pic_hd.jpg?raw=true"
     },
     {
       name: "第三届数字游民大会·清迈游牧部落",
       description: "2026年1月30日-2月1日 \n 中国最大的数字游民 brand 活动，第三届落地清迈，将创造一个只存在72小时的200人户外“部落共居实验”，围绕科技、人文、身心三大部落，自然生发共居共创、艺术装置与深度对话的Pop-Up Tribe。"
     },
     {
-      name: "乡建营地",
-      description: "Generative art and physical soundscapes."
+      name: "乡建DAO",
+      description: "乡建DAO是乡建人的朋友圈，旨在云端与大地结合的新型社区探索，也为青年人才参与乡村建设搭建新的桥梁和数字接口",
+      customIcon: "https://github.com/Uacer/Wamo/blob/main/xiangjian.png?raw=true"
     },
     {
-      name: "Nomad Kitchen",
-      description: "Community-led farm-to-table dinners."
+      name: "Hechyeomoyeo",
+      description: "The international art community, hechyeomoyeo, will host its 13th exhibition in Chiang Mai, Thailand at Far Studios from January 24th until February 14th. The exhibition features the works of over 300 artists from South Korea, Thailand, The United States, India, Vietnam, Indonesia, Mexico, and more. The space will also host events like artist workshops, noise art performances, film screenings, collaborative art making, as well as host several artist-in-residence from around the world."
     }
   ];
 
@@ -45,11 +48,19 @@ const Gallery: React.FC = () => {
               {/* Rotating Logo Wrapper - 3D Y-Axis Flip */}
               <div className="w-40 h-40 relative z-10 transition-transform duration-1000 group-hover:scale-110 flex items-center justify-center [transform-style:preserve-3d]">
                 <div className="w-full h-full animate-spin-y group-hover:[animation-duration:3s] flex items-center justify-center">
-                  <IconContainer 
-                    size="80%" 
-                    color={i % 2 === 0 ? "#9FFF79" : "#042F2E"} 
-                    className={i % 2 !== 0 ? "opacity-60" : ""}
-                  />
+                  {camp.customIcon ? (
+                    <img 
+                      src={camp.customIcon} 
+                      alt={camp.name} 
+                      className="w-[80%] h-[80%] object-contain rounded-xl drop-shadow-[0_0_15px_rgba(159,255,121,0.2)]"
+                    />
+                  ) : (
+                    <IconContainer 
+                      size="80%" 
+                      color={i % 2 === 0 ? "#9FFF79" : "#042F2E"} 
+                      className={i % 2 !== 0 ? "opacity-60" : ""}
+                    />
+                  )}
                 </div>
               </div>
               
